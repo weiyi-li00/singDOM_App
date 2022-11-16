@@ -1,1 +1,6 @@
-@import'./Allutils.scss';
+@import './utils/_Allutils';
+@import './components/_appName';
+*{
+    background-color:  #F4F4F5;
+    
+}

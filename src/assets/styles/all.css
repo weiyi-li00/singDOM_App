@@ -1,1 +1,28 @@
-/* No CSS *//*# sourceMappingURL=all.css.map */
+.appName {
+  position: absolute;
+  width: 313px;
+  height: 79px;
+  left: 42px;
+  top: 266.44px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 52.0784px;
+  line-height: 78px;
+  /* identical to box height, or 150% */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* tailwind/gray/500 */
+  color: #71717a;
+  -webkit-transform: matrix(0.88, 0, -0.63, 1, 0, 0);
+          transform: matrix(0.88, 0, -0.63, 1, 0, 0);
+}
+
+* {
+  background-color: #F4F4F5;
+}
+/*# sourceMappingURL=all.css.map */
