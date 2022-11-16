@@ -1,13 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
   <header>
-    <button type="button" class="btn btn-primary">Primary</button>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div :class="classes.red">
       <HelloWorld msg="You did it!" />
 
@@ -25,7 +21,7 @@ import HelloWorld from "./components/HelloWorld.vue";
   color: rgb(135, 192, 180);
 }
 </style>
-<style lang="scss" scoped>
+<style lang="scss">
 $blue: blue;
 header {
   line-height: 1.5;
@@ -42,6 +38,7 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+  background-color: $gray-900;
 }
 
 nav a.router-link-exact-active {

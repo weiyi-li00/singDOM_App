@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h1>helloHome</h1>
+    <button type="button" class="btn btn-primary">Primary</button>
   </main>
 </template>
