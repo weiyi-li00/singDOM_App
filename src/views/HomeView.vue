@@ -1,19 +1,21 @@
 <template>
-  <div class="upLoadgroup">
-    <img src="../../public/img/blockupload.png" alt />
-    <div class="upLoaditem">
-      <input ref="input" type="file" id="uploader" />
-    </div>
-  </div>
+  <input type="file" class="select" accept="application/pdf" placeholder="選擇PDF檔案" />
   <div id="pdfContainer" class="pdfContainer"></div>
+
+  <!-- <canvas id="canvas" style="border: 1px solid #000"></canvas> -->
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
 </script>
 <style lang="scss" scoped>
 .pdfContainer {
-  width: 870px;
+  width: 966px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20.16px 48px;
   margin: 0 auto;
+  background-color: $gray-600;
 }
 .upLoadgroup {
   float: right;
