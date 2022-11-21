@@ -1,6 +1,7 @@
 const Base64Prefix = "data:application/pdf;base64,";
 const add = document.querySelector(".add");
-pdfjsLib.GlobalWorkerOptions.workerSrc = "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
 
 // 使用原生 FileReader 轉檔
 function readBlob(blob) {
@@ -13,7 +14,6 @@ function readBlob(blob) {
 }
 
 async function printPDF(pdfData) {
-
   // 將檔案處理成 base64
   pdfData = await readBlob(pdfData);
 
@@ -34,7 +34,7 @@ async function printPDF(pdfData) {
   canvas.width = viewport.width;
   const renderContext = {
     canvasContext: context,
-    viewport,
+    viewport
   };
   const renderTask = pdfPage.render(renderContext);
 
@@ -43,7 +43,6 @@ async function printPDF(pdfData) {
 }
 
 async function pdfToImage(pdfData) {
-
   // 設定 PDF 轉為圖片時的比例
   const scale = 1 / window.devicePixelRatio;
 
@@ -51,7 +50,7 @@ async function pdfToImage(pdfData) {
   return new fabric.Image(pdfData, {
     id: "renderPDF",
     scaleX: scale,
-    scaleY: scale,
+    scaleY: scale
   });
 }
 
@@ -69,4 +68,42 @@ document.querySelector("input").addEventListener("change", async (e) => {
 
   // 將 PDF 畫面設定為背景
   canvas.setBackgroundImage(pdfImage, canvas.renderAll.bind(canvas));
+});
+//======簽名======//
+//const sign = document.querySelector(".sign");
+
+// 若 localStorage 有資料才放入
+// if (localStorage.getItem("img")) {
+//   sign.src = localStorage.getItem("img");
+// }
+
+// sign.addEventListener("click", () => {
+//   if (!sign.src) return;
+
+//   fabric.Image.fromURL(sign.src, function (image) {
+//     // 設定簽名出現的位置及大小，後續可調整
+//     image.top = 400;
+//     image.scaleX = 0.5;
+//     image.scaleY = 0.5;
+//     canvas.add(image);
+//   });
+// });
+//======下載融合簽名的 PDF 檔======//
+// 引入套件所提供的物件
+const pdf = new jsPDF("", "pt", "a4");
+
+const download = document.querySelector(".download");
+
+download.addEventListener("click", () => {
+  // 將 canvas 存為圖片
+  const image = canvas.toDataURL("image/png");
+  // 設定背景在 PDF 中的位置及大小
+  const width = pdf.internal.pageSize.width;
+  const height = pdf.internal.pageSize.height;
+  pdf.addImage(image, "png", 0, 0, width, height);
+  pdf.addPage();
+  pdf.addImage(image, "png", 0, 0, width, height);
+  //console.log("doc.setPage=>", pdf.setPage(2));
+  // 將檔案取名並下載
+  pdf.save("download.pdf");
 });

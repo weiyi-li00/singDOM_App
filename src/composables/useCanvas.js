@@ -1,4 +1,4 @@
-const singinCanvas = document.querySelector("#singinCanvas");
+const singinCanvas = document.querySelector(".singinCanvas");
 const ctx = singinCanvas.getContext("2d");
 const clearBtn = document.querySelector(".clear");
 const saveBtn = document.querySelector(".save");

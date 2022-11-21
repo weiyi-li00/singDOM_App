@@ -7,11 +7,7 @@ import singinCanvas from "../components/singinCanvas.vue";
 <template>
   <singinCanvas></singinCanvas>
   <uploading></uploading>
-  <downLoading></downLoading>
+  <!-- <downLoading></downLoading> -->
 </template>
 
-<style lang="scss" scoped>
-</style>
-
-
-
+<style lang="scss" scoped></style>

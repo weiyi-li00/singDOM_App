@@ -1,9 +1,14 @@
 <template>
-  <input type="file" class="select" accept="application/pdf" placeholder="選擇PDF檔案" />
+  <input
+    type="file"
+    class="select"
+    accept="application/pdf"
+    placeholder="選擇PDF檔案"
+  />
   <div id="pdfContainer" class="pdfContainer"></div>
+  <button class="download">download PDF</button>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style lang="scss" scoped>
 .pdfContainer {
   width: 966px;
