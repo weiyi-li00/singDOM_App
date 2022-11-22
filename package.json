@@ -10,8 +10,12 @@
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
     "element-plus": "^2.2.21",
+    "fabric": "^5.2.4",
+    "jspdf": "^2.5.1",
+    "pdfjs-dist": "^3.0.279",
     "pinia": "^2.0.23",
     "vue": "^3.2.41",
+    "vue-fabric": "^0.1.42",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
