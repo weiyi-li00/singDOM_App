@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
+import singCanvas from "../components/singCanvas.vue";
 // import usefabric from "../composables/usefabric";
 const Base64Prefix = ref("data:application/pdf;base64,");
 pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -13,7 +14,7 @@ const changeFile = (e) => {
 };
 </script>
 <template>
-  <div class="upLoaddata" v-if="getFileleng===0">
+  <div class="upLoaddata" v-if="getFileleng === 0">
     <input
       type="file"
       ref="uploadFile"
@@ -26,7 +27,7 @@ const changeFile = (e) => {
   <div class="showData">
     <div>成功上傳檔案->加入簽名檔</div>
     <canvas id="canvas" ref="canvas" style="border: 1px solid #000"></canvas>
+    <singCanvas></singCanvas>
   </div>
 </template>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
