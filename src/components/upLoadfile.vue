@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
+// import usefabric from "../composables/usefabric";
 const Base64Prefix = ref("data:application/pdf;base64,");
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
@@ -9,7 +10,6 @@ const getFileleng = ref(0);
 const changeFile = (e) => {
   getFileleng.value = e.target.files;
   if (e.target.files[0] === undefined) return;
-  console.log("有東西");
 };
 </script>
 <template>
@@ -24,6 +24,7 @@ const changeFile = (e) => {
     />
   </div>
   <div class="showData">
+    <div>成功上傳檔案->加入簽名檔</div>
     <canvas id="canvas" ref="canvas" style="border: 1px solid #000"></canvas>
   </div>
 </template>
