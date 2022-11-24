@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
 import singCanvas from "../components/singCanvas.vue";
-// import usefabric from "../composables/usefabric";
+// import usefabric from "../composables/usefabric.js";
 const Base64Prefix = ref("data:application/pdf;base64,");
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
