@@ -14,14 +14,18 @@
     "jspdf": "^2.5.1",
     "pdfjs-dist": "^3.0.279",
     "pinia": "^2.0.23",
+    "unplugin-vue": "^3.1.3",
     "vue": "^3.2.41",
     "vue-fabric": "^0.1.42",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.2",
+    "i": "^0.3.7",
+    "npm": "^9.1.2",
     "sass": "^1.56.1",
     "unplugin-auto-import": "^0.11.5",
+    "unplugin-element-plus": "^0.4.1",
     "unplugin-icons": "^0.14.14",
     "unplugin-vue-components": "^0.22.11",
     "vite": "^3.1.8"
