@@ -25,24 +25,90 @@ const handleClick = (tab, event) => {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-                <el-tab-pane label="User" name="first">User</el-tab-pane>
-                <el-tab-pane label="Config" name="second">Config</el-tab-pane>
-                <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-              </el-tabs>
-            </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body"></div>
+          <div class="modal-body">
+            <nav class="nav">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button
+                  class="nav-link"
+                  id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >輸入</button>
+                <button
+                  class="nav-link"
+                  id="nav-profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >手寫</button>
+                <button
+                  class="nav-link"
+                  id="nav-contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false"
+                >上傳</button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+                tabindex="0"
+              >
+                <canvas
+                  id="singCanvas"
+                  class="border border-dark border-dashed rounded"
+                  width="466"
+                  height="234"
+                ></canvas>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+                tabindex="0"
+              >...</div>
+              <div
+                class="tab-pane fade"
+                id="nav-contact"
+                role="tabpanel"
+                aria-labelledby="nav-contact-tab"
+                tabindex="0"
+              >...</div>
+              <div
+                class="tab-pane fade"
+                id="nav-disabled"
+                role="tabpanel"
+                aria-labelledby="nav-disabled-tab"
+                tabindex="0"
+              >...</div>
+            </div>
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" id="clearCanvas">清除</button>
+            <button type="button" class="btn btn-primary" id="saveCanvas" data-bs-dismiss="modal">儲存</button>
           </div>
         </div>
       </div>
     </div>
     <!-- Button trigger modal -->
+    <img class="show-img" id="show-img" width="250" height="150" style="border: 1px solid" />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -52,5 +118,34 @@ const handleClick = (tab, event) => {
   padding-right: 78px;
   float: right;
   background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+}
+.nav {
+  background-color: #f5f6f8;
+  padding: 0px;
+  margin: 0px;
+  .nav-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    .nav-link {
+      padding: 0px;
+      color: #000000;
+    }
+  }
+}
+.active {
+  background-color: #f5f6f8;
+  border-color: #f5f6f8;
+}
+.modal-header {
+  border-bottom: 0;
+}
+.modal-content {
+  width: 512px;
+}
+.tab-content {
+  padding: 16px 0;
 }
 </style>
