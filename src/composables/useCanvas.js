@@ -1,11 +1,11 @@
 const singCanvas = document.querySelector("#singCanvas");
-const ctx = singCanvas.getContext("2d");
+const ctx1 = singCanvas.getContext("2d");
 const clearBtn = document.getElementById("clearCanvas");
 const saveBtn = document.getElementById("saveCanvas");
 
 // 設定線條的相關數值
-ctx.lineWidth = 4;
-ctx.lineCap = "round";
+ctx1.lineWidth = 4;
+ctx1.lineCap = "round";
 
 // 設置狀態來確認滑鼠 / 手指是否按下或在畫布範圍中
 let isPainting = false;
@@ -35,7 +35,7 @@ function startPosition(e) {
 // 結束繪圖時，將狀態關閉，並產生新路徑
 function finishedPosition() {
   isPainting = false;
-  ctx.beginPath();
+  ctx1.beginPath();
 }
 
 // 繪圖過程
@@ -47,13 +47,13 @@ function draw(e) {
   const paintPosition = getPaintPosition(e);
 
   // 移動滑鼠位置並產生圖案
-  ctx.lineTo(paintPosition.x, paintPosition.y);
-  ctx.stroke();
+  ctx1.lineTo(paintPosition.x, paintPosition.y);
+  ctx1.stroke();
 }
 
 // 重新設定畫布
 function reset() {
-  ctx.clearRect(0, 0, singCanvas.width, singCanvas.height);
+  ctx1.clearRect(0, 0, singCanvas.width, singCanvas.height);
 }
 
 // event listener 電腦板
@@ -69,13 +69,13 @@ singCanvas.addEventListener("touchcancel", finishedPosition);
 singCanvas.addEventListener("touchmove", draw);
 
 clearBtn.addEventListener("click", reset);
-const showImage = document.getElementById("show-img");
 
+// const showImage = document.getElementById("show-img");
+const sign = document.getElementById("show-img");
 function saveImage() {
-  // 圖片儲存的類型選擇 png ，並將值放入 img 的 src
-  const newImg = singCanvas.toDataURL("image/png");
-  showImage.src = newImg;
-  localStorage.setItem('img', newImg)
+    // 圖片儲存的類型選擇 png ，並將值放入 img 的 src
+    const newImg = singCanvas.toDataURL("image/png");
+    localStorage.setItem('img', newImg)
 }
-
 saveBtn.addEventListener("click", saveImage);
+
