@@ -24,7 +24,7 @@ async function printPDF(pdfData) {
   const viewport = pdfPage.getViewport({ scale: window.devicePixelRatio });
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
-  document.getElementsByTagName("canvas")[1].removeAttribute("style");
+    document.getElementsByTagName("canvas")[1].removeAttribute("style");
   // 控制顯示PDF的寬高
   canvas.height = viewport.height;
   canvas.width = viewport.width;
@@ -71,6 +71,7 @@ sign.addEventListener("click", () => {
     image.scaleX = 0.5;
     image.scaleY = 0.5;
     canvas.add(image);
+    canvas.setActiveObject(image)
   });
 });
 

@@ -1,3 +1,10 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@media screen and (max-width: 570px) {
+  .navbar {
+    padding: 16px 24px !important;
+  }
+}
+
 .appName {
   width: 313px;
   height: 79px;
@@ -19,6 +26,43 @@
   color: #71717a;
   -webkit-transform: matrix(0.88, 0, -0.63, 1, 0, 0);
           transform: matrix(0.88, 0, -0.63, 1, 0, 0);
+}
+
+.btn-pt8-pb-29 {
+  padding: 8px 29px;
+}
+
+.btn-text {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 22px;
+}
+
+.btn-t-color {
+  color: #0B7D77;
+}
+
+.btn-t-color:hover {
+  color: #096561;
+  cursor: pointer;
+}
+
+.btn-color {
+  color: #ffff;
+  background-color: #0B7D77;
+}
+
+.btn-color:hover {
+  background-color: #096561;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.btn-color:focus-visible {
+  outline: #0B7D77;
 }
 
 * {

@@ -70,7 +70,6 @@ singCanvas.addEventListener("touchmove", draw);
 
 clearBtn.addEventListener("click", reset);
 
-// const showImage = document.getElementById("show-img");
 const sign = document.getElementById("show-img");
 function saveImage() {
     // 圖片儲存的類型選擇 png ，並將值放入 img 的 src

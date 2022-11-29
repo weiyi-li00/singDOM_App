@@ -1,0 +1,30 @@
+.btn-pt8-pb-29{
+    padding: 8px 29px;
+}
+.btn-text{
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 22px;
+}
+.btn-t-color{
+    color: #0B7D77;
+    &:hover{
+        color: #096561;
+        cursor: pointer;
+    }
+}
+.btn-color{
+    color: #ffff;
+    background-color:  #0B7D77;
+    &:hover{
+        background-color:  #096561;
+        color: #ffff;
+        cursor: pointer;
+    }
+    &:focus-visible {
+        outline: #0B7D77;
+      }
+}

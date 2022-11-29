@@ -28,7 +28,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))
-    }
+    }, 
+    
   },
   css: {
     preprocessorOptions: {
@@ -36,5 +37,9 @@ export default defineConfig({
         additionalData: ['@import "@/assets/styles/utils/_Allutils.scss";']
       }
     }
-  }
+  },
+  server: {
+    hmr: { overlay: false },
+  },
+  
 });

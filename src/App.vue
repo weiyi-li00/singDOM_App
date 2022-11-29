@@ -1,20 +1,12 @@
 <script setup>
+import { ref, onMounted } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <header>
-    <div :class="classes.red">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <Header></Header>
+  <!-- <RouterView /> -->
 </template>
 <style module="classes">
 .red {
