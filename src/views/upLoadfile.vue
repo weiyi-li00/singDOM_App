@@ -1,16 +1,33 @@
 <script setup>
-import { ref } from "vue";
+import { ref, nextTick, onMounted } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
-
+import vueEsign from "vue-esign";
+// const lineColor = ref("#0B7D77");
+const resultImg = ref("");
 const getFileleng = ref(0);
+const showData = ref(false);
 const changeFile = (e) => {
   getFileleng.value = e.target.files;
+  showData.value = true;
   if (e.target.files[0] === undefined) return;
 };
+
+function handleGenerate(e) {
+  e.esign
+    .generate()
+    .then((res) => {
+      resultImg.value = res;
+      localStorage.setItem("img", resultImg.value);
+      console.log(resultImg.value);
+    })
+    .catch((err) => {
+      alert(err); // 画布没有签字时会执行这里 'Not Signned'
+    });
+}
 </script>
 <template>
-  <div class="upLoaddata" v-if="getFileleng === 0">
+  <div class="upLoaddata">
     <input
       type="file"
       ref="uploadFile"
@@ -19,7 +36,7 @@ const changeFile = (e) => {
       @change="changeFile($event)"
     />
   </div>
-  <div class="showData">
+  <div class="showData d-flex justify-content-between" v-if="showData">
     <div>成功上傳檔案->加入簽名檔</div>
     <canvas id="canvas" style="border: 1px solid #000;position:none;"></canvas>
     <div class="sideBar">
@@ -83,12 +100,15 @@ const changeFile = (e) => {
                   aria-labelledby="nav-home-tab"
                   tabindex="0"
                 >
-                  <canvas
-                    id="singCanvas"
-                    class="border border-dark border-dashed rounded"
+                  <vue-esign
+                    ref="esign"
                     width="466"
                     height="234"
-                  ></canvas>
+                    :isCrop="isCrop"
+                    :lineWidth="lineWidth"
+                    :lineColor="lineColor"
+                    v-model:bgColor="bgColor"
+                  />
                 </div>
                 <div
                   class="tab-pane fade"
@@ -114,12 +134,18 @@ const changeFile = (e) => {
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="clearCanvas">清除</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="clearCanvas"
+                @click="handleReset=$refs.esign.reset()"
+              >清除</button>
               <button
                 type="button"
                 class="btn btn-primary"
                 id="saveCanvas"
                 data-bs-dismiss="modal"
+                @click="handleGenerate($refs)"
               >儲存</button>
             </div>
           </div>
@@ -127,10 +153,10 @@ const changeFile = (e) => {
       </div>
       <!--Button trigger modal -->
       <p>我的簽名</p>
-      <img id="show-img" style="border: 1px solid #000" width="250" height="150" />
+      <img id="show-img" style="border: 1px solid #000" width="250" height="150" :src="resultImg" />
     </div>
   </div>
-  <button class="download">download PDF</button>
+  <!-- <button class="download">download PDF</button> -->
 </template>
 <style lang="scss" scoped>
 .sideBar {

@@ -19,4 +19,9 @@
   align-items: center;
   color: #ffffff;
 }
+@media (max-width: 570px) {
+  .footer {
+    padding: 16px 24px !important;
+  }
+}
 </style>

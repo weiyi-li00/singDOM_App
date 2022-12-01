@@ -57,13 +57,8 @@ document.querySelector("input").addEventListener("change", async (e) => {
   canvas.setBackgroundImage(pdfImage, canvas.renderAll.bind(canvas));
 });
 
-// 加入簽名
-// const sign = document.querySelector(".sign");
-const sign = document.getElementById("show-img");
-if (localStorage.getItem("img")) {
-  sign.src = localStorage.getItem("img");
-}
-
+ // 加入簽名
+ const sign = document.getElementById("show-img");
 sign.addEventListener("click", () => {
   if (!sign.src) return;
   fabric.Image.fromURL(sign.src, function (image) {

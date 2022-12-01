@@ -29,4 +29,9 @@ import { RouterLink, RouterView } from "vue-router";
   letter-spacing: -0.2px;
   color: #676879;
 }
+@media (max-width: 570px) {
+  .navbar {
+    padding: 16px 24px !important;
+  }
+}
 </style>
