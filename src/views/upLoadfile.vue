@@ -19,7 +19,7 @@ const changeFile = (e) => {
 <template>
   <div class="upLoaddata" v-show="upLoadDatata">
     <h2 class="appDESC d-sm-none text-center">快速省時的電子簽署工具</h2>
-    <div class="upLoadblock d-flex" width="1296px">
+    <div class="upLoadblock d-flex justify-content-around;">
       <div class="upLoaditem d-flex flex-column align-items-center m-auto">
         <img src="../../public/img/Add file.png" alt />
         <span class="text">將檔案拖曳至這裡，或</span>
@@ -38,6 +38,27 @@ const changeFile = (e) => {
         <span class="text2 text-align-center">檔案大小10MB以內，檔案格式為PDF、JPG 或 PNG</span>
       </div>
     </div>
+    <h2 class="text3">輕鬆幾步驟，完成您的簽署</h2>
+    <div class="content d-flex justify-content-around" width="1296px">
+      <div class="imgGroup d-flex flex-column align-items-center">
+        <div class="num">1</div>
+        <span class="itemTitle">上傳檔案</span>
+        <span class="itemDesc">選擇PDF檔或是IMG檔</span>
+        <img src="../../public/img/File-upload.png" width="240" height="160" alt class="imgItem" />
+      </div>
+      <div class="imgGroup d-flex flex-column align-items-center" width="240" height="160">
+        <div class="num">2</div>
+        <span class="itemTitle">加入簽名檔</span>
+        <span class="itemDesc">手寫、輸入或是上傳簽名檔</span>
+        <img src="../../public/img/Signing.png" alt class="imgItem" />
+      </div>
+      <div class="imgGroup d-flex flex-column align-items-center" width="240" height="160">
+        <div class="num">3</div>
+        <span class="itemTitle">下載與傳送</span>
+        <span class="itemDesc">完成簽署可立即傳送檔案給對方</span>
+        <img src="../../public/img/Sending.png" alt class="imgItem" />
+      </div>
+    </div>
   </div>
   <!-- v-show="showData" -->
   <div class="singCanvas" v-show="showData">
@@ -45,6 +66,37 @@ const changeFile = (e) => {
   </div>
 </template>
 <style lang="scss" scoped>
+.itemTitle {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  color: #323338;
+  .itemDesc {
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #323338;
+  }
+}
+.text3 {
+  left: calc(50% - 286px / 2);
+  top: 616px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #323338;
+  text-align: center;
+  margin-bottom: 27px;
+}
 .appDESC {
   font-family: "Noto Sans TC";
   margin-top: 32px;
@@ -70,6 +122,10 @@ const changeFile = (e) => {
   padding-bottom: 12px;
   padding-top: 11px;
   border: 2px dashed #0b7d77;
+}
+.content {
+  width: 1296px;
+  margin: 0 auto;
 }
 .upLoaditem {
   font-style: normal;
@@ -123,6 +179,10 @@ const changeFile = (e) => {
 }
 
 @media (max-width: 570px) {
+  .content {
+    width: 100%;
+    flex-wrap: wrap;
+  }
   .upLoadBtn {
     width: 144px !important;
     height: 48px !important;
