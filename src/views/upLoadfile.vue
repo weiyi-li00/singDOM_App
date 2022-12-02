@@ -2,197 +2,162 @@
 import { ref, nextTick, onMounted } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
-import vueEsign from "vue-esign";
+import singCanvas from "../components/singCanvas.vue";
 // const lineColor = ref("#0B7D77");
-const resultImg = ref("");
+
 const getFileleng = ref(0);
 const showData = ref(false);
+const upLoadDatata = ref(true);
 const changeFile = (e) => {
-  getFileleng.value = e.target.files;
-  showData.value = true;
+  getFileleng.value = e.target.files[0];
+  console.log(getFileleng.value);
   if (e.target.files[0] === undefined) return;
+  showData.value = true;
+  upLoadDatata.value = false;
 };
-
-function handleGenerate(e) {
-  e.esign
-    .generate()
-    .then((res) => {
-      resultImg.value = res;
-      localStorage.setItem("img", resultImg.value);
-      console.log(resultImg.value);
-    })
-    .catch((err) => {
-      alert(err); // 画布没有签字时会执行这里 'Not Signned'
-    });
-}
 </script>
 <template>
-  <div class="upLoaddata">
-    <input
-      type="file"
-      ref="uploadFile"
-      accept="application/pdf"
-      placeholder="選擇PDF檔案"
-      @change="changeFile($event)"
-    />
-  </div>
-  <div class="showData d-flex justify-content-between" v-if="showData">
-    <div>成功上傳檔案->加入簽名檔</div>
-    <canvas id="canvas" style="border: 1px solid #000;position:none;"></canvas>
-    <div class="sideBar">
-      <!--Button trigger modal-->
-      <div type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <b>+</b>創造簽名檔
-      </div>
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <nav class="nav">
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button
-                    class="nav-link"
-                    id="nav-home-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-home"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-home"
-                    aria-selected="true"
-                  >輸入</button>
-                  <button
-                    class="nav-link"
-                    id="nav-profile-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-profile"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-profile"
-                    aria-selected="false"
-                  >手寫</button>
-                  <button
-                    class="nav-link"
-                    id="nav-contact-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-contact"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-contact"
-                    aria-selected="false"
-                  >上傳</button>
-                </div>
-              </nav>
-              <div class="tab-content" id="nav-tabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="nav-home"
-                  role="tabpanel"
-                  aria-labelledby="nav-home-tab"
-                  tabindex="0"
-                >
-                  <vue-esign
-                    ref="esign"
-                    width="466"
-                    height="234"
-                    :isCrop="isCrop"
-                    :lineWidth="lineWidth"
-                    :lineColor="lineColor"
-                    v-model:bgColor="bgColor"
-                  />
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-profile"
-                  role="tabpanel"
-                  aria-labelledby="nav-profile-tab"
-                  tabindex="0"
-                >...</div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-contact"
-                  role="tabpanel"
-                  aria-labelledby="nav-contact-tab"
-                  tabindex="0"
-                >...</div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-disabled"
-                  role="tabpanel"
-                  aria-labelledby="nav-disabled-tab"
-                  tabindex="0"
-                >...</div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="clearCanvas"
-                @click="handleReset=$refs.esign.reset()"
-              >清除</button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                id="saveCanvas"
-                data-bs-dismiss="modal"
-                @click="handleGenerate($refs)"
-              >儲存</button>
-            </div>
-          </div>
+  <div class="upLoaddata" v-show="upLoadDatata">
+    <h2 class="appDESC d-sm-none text-center">快速省時的電子簽署工具</h2>
+    <div class="upLoadblock d-flex" width="1296px">
+      <div class="upLoaditem d-flex flex-column align-items-center m-auto">
+        <img src="../../public/img/Add file.png" alt />
+        <span class="text">將檔案拖曳至這裡，或</span>
+        <div class="upLoadBtn">
+          <span>選擇檔案</span>
+          <input
+            style="opacity: 0"
+            type="file"
+            ref="uploadFile"
+            accept="application/pdf"
+            placeholder="選擇PDF檔案"
+            @change="changeFile($event)"
+          />
         </div>
+
+        <span class="text2 text-align-center">檔案大小10MB以內，檔案格式為PDF、JPG 或 PNG</span>
       </div>
-      <!--Button trigger modal -->
-      <p>我的簽名</p>
-      <img id="show-img" style="border: 1px solid #000" width="250" height="150" :src="resultImg" />
     </div>
   </div>
-  <!-- <button class="download">download PDF</button> -->
+  <!-- v-show="showData" -->
+  <div class="singCanvas" v-show="showData">
+    <singCanvas></singCanvas>
+  </div>
 </template>
 <style lang="scss" scoped>
-.sideBar {
-  // width: 402px;
-  padding-left: 24px;
-  padding-right: 78px;
-  float: right;
-  background-color: #e5e5e5;
-  display: flex;
-  flex-direction: column;
+.appDESC {
+  font-family: "Noto Sans TC";
+  margin-top: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  color: #676879;
+  margin-bottom: 16px;
 }
-.nav {
-  background-color: #f5f6f8;
-  padding: 0px;
-  margin: 0px;
-  .nav-tabs {
-    width: 100%;
+.upLoadblock,
+.upLoaditem,
+.upLoaditem > img,
+.upLoaditem > .text,
+.upLoaditem > input,
+.upLoaditem > .text2 {
+  background-color: #cee5e4;
+}
+.upLoadblock {
+  width: 1296px;
+  height: 440px;
+  margin: 40px auto;
+  padding-bottom: 12px;
+  padding-top: 11px;
+  border: 2px dashed #0b7d77;
+}
+.upLoaditem {
+  font-style: normal;
+  img {
+    max-width: 120px;
+    max-height: 120px;
+    margin-bottom: 30px;
+  }
+  .text {
+    margin-bottom: 8px;
+  }
+  .upLoadBtn {
+    width: 416px;
+    height: 48px;
+    background: #0b7d77;
+    border-radius: 4px;
+    margin-bottom: 16px;
     display: flex;
-    justify-content: space-around;
-    .nav-link {
-      padding: 0px;
-      color: #000000;
+    align-items: center;
+    position: relative;
+    span {
+      width: 100px;
+      margin: 0 auto;
+      background: #0b7d77;
+      font-family: "Noto Sans TC";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: -0.5px;
+      color: #ffffff;
     }
   }
+  input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    position: absolute;
+  }
+  .text2 {
+    font-family: "Noto Sans TC";
+    width: 326px;
+    height: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #096561;
+  }
 }
-.active {
-  background-color: #f5f6f8;
-  border-color: #f5f6f8;
-}
-.modal-header {
-  border-bottom: 0;
-}
-.modal-content {
-  width: 512px;
-}
-.tab-content {
-  padding: 16px 0;
+
+@media (max-width: 570px) {
+  .upLoadBtn {
+    width: 144px !important;
+    height: 48px !important;
+  }
+  .upLoadblock {
+    width: 100%;
+    margin: 40px auto;
+    padding: 126px 24px 122px 24px;
+  }
+  .upLoaddata {
+    padding: 0px 24px;
+  }
+  .upLoaditem {
+    width: 100%;
+    margin: 0 auto;
+    img {
+      margin-bottom: 20px;
+    }
+    .text {
+      display: none;
+      margin-bottom: 8px;
+    }
+    .text2 {
+      width: 264px;
+      height: 44px;
+      left: calc(50% - 264px / 2);
+      top: 426px;
+      line-height: 22px;
+      text-align: center;
+    }
+    input {
+      margin-bottom: 8px;
+      width: 144px;
+      height: 48px;
+    }
+  }
 }
 </style>

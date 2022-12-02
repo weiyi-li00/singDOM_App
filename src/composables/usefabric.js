@@ -1,6 +1,5 @@
 
 const Base64Prefix = "data:application/pdf;base64,";
-const add = document.querySelector(".add");
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
 
@@ -71,12 +70,12 @@ sign.addEventListener("click", () => {
 });
 
 // 下讚PDF
-const pdf = new jsPDF();
-const download = document.querySelector(".download");
-download.addEventListener("click", () => {
-  const image = canvas.toDataURL("image/png");
-  const width = pdf.internal.pageSize.width;
-  const height = pdf.internal.pageSize.height;
-  pdf.addImage(image, "png", 0, 0, width, height);
-  pdf.save("download.pdf");
-});
+// const pdf = new jsPDF();
+// const download = document.querySelector(".download");
+// download.addEventListener("click", () => {
+//   const image = canvas.toDataURL("image/png");
+//   const width = pdf.internal.pageSize.width;
+//   const height = pdf.internal.pageSize.height;
+//   pdf.addImage(image, "png", 0, 0, width, height);
+//   pdf.save("download.pdf");
+// });
