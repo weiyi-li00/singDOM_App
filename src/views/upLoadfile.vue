@@ -66,6 +66,24 @@ const changeFile = (e) => {
   </div>
 </template>
 <style lang="scss" scoped>
+.imgGroup {
+  .num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: #0b7d77;
+    border: 2px solid #0b7d77;
+    border-radius: 100%;
+    margin-bottom: 8px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+  }
+}
 .itemTitle {
   font-family: "Noto Sans TC";
   font-style: normal;
