@@ -4,9 +4,11 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <nav class="navbar bg-light logo-ml flex-nowrap m-0">
     <div class>
-      <a class="navbar-brand" href="#">
-        <img src="../../public/img/logo.png" alt="logo" width="96" height="48" />
-      </a>
+      <RouterLink to="/">
+        <a class="navbar-brand" href="#">
+          <img src="../../public/img/logo.png" alt="logo" width="96" height="48" />
+        </a>
+      </RouterLink>
     </div>
     <h2 class="title d-none d-lg-block">快速省時的電子簽署工具</h2>
     <div class="d-flex">

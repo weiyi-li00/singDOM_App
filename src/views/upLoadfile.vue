@@ -2,6 +2,8 @@
 import { ref, nextTick, onMounted } from "vue";
 import { fabric } from "fabric";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
+import Header from "../components/Header.vue";
+import singHeader from "../components/singHeader.vue";
 import singCanvas from "../components/singCanvas.vue";
 // const lineColor = ref("#0B7D77");
 
@@ -18,6 +20,7 @@ const changeFile = (e) => {
 </script>
 <template>
   <div class="upLoaddata" v-show="upLoadDatata">
+    <Header></Header>
     <h2 class="appDESC d-sm-none text-center">快速省時的電子簽署工具</h2>
     <div class="upLoadblock d-flex justify-content-around;">
       <div class="upLoaditem d-flex flex-column align-items-center m-auto">
@@ -62,6 +65,7 @@ const changeFile = (e) => {
   </div>
   <!-- v-show="showData" -->
   <div class="singCanvas" v-show="showData">
+    <singHeader></singHeader>
     <singCanvas></singCanvas>
   </div>
 </template>

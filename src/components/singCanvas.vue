@@ -23,7 +23,6 @@ function handleGenerate(e) {
 </script>
 <template>
   <div class="showData d-flex justify-content-between">
-    <div>成功上傳檔案->加入簽名檔</div>
     <canvas id="canvas" style="border: 1px solid #000;"></canvas>
     <div class="sideBar">
       <!--Button trigger modal-->

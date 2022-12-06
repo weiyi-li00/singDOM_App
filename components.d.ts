@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SingCanvas: typeof import('./src/components/singCanvas.vue')['default']
+    SingHeader: typeof import('./src/components/singHeader.vue')['default']
     UpLoadfile: typeof import('./src/components/upLoadfile.vue')['default']
   }
 }
