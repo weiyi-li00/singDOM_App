@@ -19,7 +19,7 @@ const changeFile = (e) => {
 };
 </script>
 <template>
-  <div class="upLoaddata" v-show="upLoadDatata">
+  <!-- <div class="upLoaddata" v-show="upLoadDatata">
     <Header></Header>
     <h2 class="appDESC d-sm-none text-center">快速省時的電子簽署工具</h2>
     <div class="upLoadblock d-flex justify-content-around;">
@@ -62,9 +62,9 @@ const changeFile = (e) => {
         <img src="../../public/img/Sending.png" alt class="imgItem" />
       </div>
     </div>
-  </div>
+  </div>-->
   <!-- v-show="showData" -->
-  <div class="singCanvas" v-show="showData">
+  <div class="singCanvas">
     <singHeader></singHeader>
     <singCanvas></singCanvas>
   </div>
